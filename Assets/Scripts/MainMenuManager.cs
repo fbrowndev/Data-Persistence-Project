@@ -14,14 +14,16 @@ public class MainMenuManager : MonoBehaviour
     [Header("User Data")]
     public string player;
     public TMP_InputField userName;
-    public TMP_Text highScore;
 
     #endregion
 
+    void Start()
+    {
+        HighScore.Instance.LoadHighScoreData();
+    }
 
-
-#region Start Menu Controls
-public void StartGame()
+    #region Start Menu Controls
+    public void StartGame()
     {
         SceneManager.LoadScene(1);
     }
@@ -39,6 +41,7 @@ public void StartGame()
     public void SaveName()
     {
         player = userName.text;
+        HighScore.Instance.PlayerName = player;
     }
 
     #endregion
